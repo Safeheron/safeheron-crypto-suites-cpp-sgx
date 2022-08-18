@@ -1,0 +1,3 @@
+[submodule "src/safeheron-crypto-suites-cpp"]
+	path = src/safeheron-crypto-suites-cpp
+	url = https://github.com/Safeheron/safeheron-crypto-suites-cpp.git
