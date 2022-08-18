@@ -7,23 +7,23 @@ SGX-supported version of [safeheron-crypto-suites-cpp](https://github.com/Safehe
 # Prerequisites
 
 - [SGX Components](https://01.org/intel-software-guard-extensions/downloads)
-    - SGX Driver.  See [SGX-Driver-Installation](doc/SGX-Driver-Installation.md).
-    - SGX SDK (SGX SDK 2.16 or later is required). [SGX-SDK-Installation](doc/SGX-SDK-Installation.md).
+    - SGX Driver. See [SGX-Driver-Installation](doc/SGX-Driver-Installation.md).
+    - SGX SDK (SGX SDK 2.16 or later is required). See [SGX-SDK-Installation](doc/SGX-SDK-Installation.md).
 - [Intel SGX-SSL](https://github.com/intel/intel-sgx-ssl.git). See [SGX-SSL-Installation](doc/SGX-SSL-Installation.md).
 
 # Build & Install
     
 It only supports Linux now.
 ```shell
-$ git clone --recurse-submodules https://github.com/Safeheron/sgx-crypto-suites-cpp.git
-$ cd sgx-crypto-suites-cpp 
+$ git clone --recurse-submodules https://github.com/Safeheron/sgx-safeheron-crypto-suites-cpp.git
+$ cd sgx-safeheron-crypto-suites-cpp 
 $ mkdir build && cd build
 $ cmake ..
 $ make
 $ sudo make install
 ```
 
-# To start using sgx-crypto-suites-cpp
+# To start using sgx-safeheron-crypto-suites-cpp
 
 ## CMake
 
