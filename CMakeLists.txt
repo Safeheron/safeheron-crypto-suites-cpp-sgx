@@ -23,7 +23,7 @@ set(SGX_SDK_INCLUDE_DIR "${SGX_SDK_PATH}/include")
 set(SGX_SDK_LIBRARIES_DIR "${SGX_SDK_PATH}/lib64")
 set(SGX_C_INCLUDE_DIR "${SGX_SDK_INCLUDE_DIR}/tlibc")
 set(SGX_CXX_INCLUDE_DIR "${SGX_SDK_INCLUDE_DIR}/libcxx")
-set(PROTOBUF_INCLUDE_DIR "${SGX_SDK_INCLUDE_DIR}/tprotobuf")
+set(SGX_PROTOBUF_INCLUDE_DIR "${SGX_SDK_INCLUDE_DIR}/tprotobuf")
 
 # Set the sgxssl path
 set(SGX_SSL_PATH "/opt/intel/sgxssl")
@@ -96,11 +96,11 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
 		${CRYPTO_SUITES_SOURCE_PATH}/crypto-ecies-cpp/src
 		${CRYPTO_SUITES_SOURCE_PATH}/crypto-curve-cpp/third_party
 		${SGX_SSL_INCLUDE_DIR}
-        ${PROTOBUF_INCLUDE_DIR}
         ${SGX_SDK_INCLUDE_DIR}
         ${SGX_C_INCLUDE_DIR}
         ${SGX_CXX_INCLUDE_DIR}
-	)
+		${SGX_PROTOBUF_INCLUDE_DIR}
+		)
 
 # Link flags
 target_link_libraries(${CMAKE_PROJECT_NAME} "${SGX_COMMON_C_FLAGS} \
