@@ -1,4 +1,4 @@
-# sgx-crypto-suites-cpp
+# sgx-safeheron-crypto-suites-cpp
 
 ![image](doc/logo.png)
 
