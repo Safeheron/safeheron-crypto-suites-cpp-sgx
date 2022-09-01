@@ -9,9 +9,9 @@ $ sudo apt install dkms
 - on ubuntu 18.04
 
 ```shell
-$ wget https://download.01.org/intel-sgx/sgx-linux/2.16/distro/ubuntu18.04-server/sgx_linux_x64_sdk_2.16.100.4.bin
-$ chmod +x sgx_linux_x64_sdk_2.16.100.4.bin
-$ ./sgx_linux_x64_sdk_2.16.100.4.bin   //Two questions will be asked, answer as follows
+$ wget https://download.01.org/intel-sgx/sgx-linux/2.17.1/distro/ubuntu18.04-server/sgx_linux_x64_sdk_2.17.101.1.bin
+$ chmod +x sgx_linux_x64_sdk_2.17.101.1.bin
+$ ./sgx_linux_x64_sdk_2.17.101.1.bin   //Two questions will be asked, answer as follows
 ```
 Question: Do you want to install in current directory? [yes/no] :  **no**
 Question: Please input the directory which you want to install in :  **/opt/intel/**
@@ -20,9 +20,9 @@ Question: Please input the directory which you want to install in :  **/opt/inte
 - on ubuntu 20.04
 
 ```shell
-$ wget https://download.01.org/intel-sgx/sgx-linux/2.16/distro/ubuntu20.04-server/sgx_linux_x64_sdk_2.16.100.4.bin
-$ chmod +x sgx_linux_x64_sdk_2.16.100.4.bin
-$ ./sgx_linux_x64_sdk_2.16.100.4.bin   //Two questions will be asked, answer as follows
+$ wget https://download.01.org/intel-sgx/sgx-linux/2.17.1/distro/ubuntu20.04-server/sgx_linux_x64_sdk_2.17.101.1.bin
+$ chmod +x sgx_linux_x64_sdk_2.17.101.1.bin
+$ ./sgx_linux_x64_sdk_2.17.101.1.bin   //Two questions will be asked, answer as follows
 ```
 Question: Do you want to install in current directory? [yes/no] :  **no**
 Question: Please input the directory which you want to install in :  **/opt/intel/**
