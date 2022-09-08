@@ -105,9 +105,9 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
 		${CRYPTO_SUITES_SOURCE_PATH}/crypto-ecies-cpp/src
 		${CRYPTO_SUITES_SOURCE_PATH}/crypto-curve-cpp/third_party
 		${SGX_SSL_INCLUDE_DIR}
-        ${SGX_SDK_INCLUDE_DIR}
-        ${SGX_C_INCLUDE_DIR}
-        ${SGX_CXX_INCLUDE_DIR}
+		${SGX_SDK_INCLUDE_DIR}
+		${SGX_C_INCLUDE_DIR}
+		${SGX_CXX_INCLUDE_DIR}
 		${SGX_PROTOBUF_INCLUDE_DIR}
 		)
 
