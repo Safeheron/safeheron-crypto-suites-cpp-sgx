@@ -51,7 +51,7 @@ AUX_SOURCE_DIRECTORY(${CRYPTO_SUITES_SOURCE_PATH}/crypto-mta-cpp/src/crypto-mta 
 AUX_SOURCE_DIRECTORY(${CRYPTO_SUITES_SOURCE_PATH}/crypto-bip32-cpp/src/crypto-bip32  BIP32_SOURCE)
 AUX_SOURCE_DIRECTORY(${CRYPTO_SUITES_SOURCE_PATH}/crypto-ecies-cpp/src/crypto-ecies  ECIES_SOURCE)
 
-file(GLOB ED25519-DONNA_SOURCES
+set(ED25519-DONNA_SOURCES
 		${CRYPTO_SUITES_SOURCE_PATH}/crypto-curve-cpp/third_party/ed25519-donna/curve25519-donna-32bit.c
 		${CRYPTO_SUITES_SOURCE_PATH}/crypto-curve-cpp/third_party/ed25519-donna/curve25519-donna-helpers.c
 		${CRYPTO_SUITES_SOURCE_PATH}/crypto-curve-cpp/third_party/ed25519-donna/curve25519-donna-scalarmult-base.c
@@ -61,6 +61,14 @@ file(GLOB ED25519-DONNA_SOURCES
 		${CRYPTO_SUITES_SOURCE_PATH}/crypto-curve-cpp/third_party/ed25519-donna/ed25519-donna-impl-base.c
 		${CRYPTO_SUITES_SOURCE_PATH}/crypto-curve-cpp/third_party/ed25519-donna/ed25519-donna-memzero.c
 		${CRYPTO_SUITES_SOURCE_PATH}/crypto-curve-cpp/third_party/ed25519-donna/modm-donna-32bit.c
+		)
+
+set(PROTOBUF_SOURCE_FILES
+		${CRYPTO_SUITES_SOURCE_PATH}/crypto-commitment-cpp/src/crypto-commitment/proto_gen/commitment.pb.switch.cc
+		${CRYPTO_SUITES_SOURCE_PATH}/crypto-curve-cpp/src/crypto-curve/proto_gen/curve_point.pb.switch.cc
+		${CRYPTO_SUITES_SOURCE_PATH}/crypto-mta-cpp/src/crypto-mta/proto_gen/mta.pb.switch.cc
+		${CRYPTO_SUITES_SOURCE_PATH}/crypto-paillier-cpp/src/crypto-paillier/proto_gen/paillier.pb.switch.cc
+		${CRYPTO_SUITES_SOURCE_PATH}/crypto-zkp-cpp/src/crypto-zkp/proto_gen/zkp.pb.switch.cc
 		)
 
 set(SUITES_SOURCE
@@ -76,6 +84,7 @@ set(SUITES_SOURCE
 		${BIP32_SOURCE}
 		${ECIES_SOURCE}
 		${ED25519-DONNA_SOURCES}
+		${PROTOBUF_SOURCE_FILES}
 		)
 
 # Build libSGX-CryptoSuites.a
