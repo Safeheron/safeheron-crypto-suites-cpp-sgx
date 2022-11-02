@@ -1,4 +1,4 @@
-# sgx-safeheron-crypto-suites-cpp
+# safeheron-crypto-suites-cpp-sgx
 
 ![image](doc/logo.png)
 
@@ -15,8 +15,8 @@ SGX-supported version of [safeheron-crypto-suites-cpp](https://github.com/Safehe
     
 It only supports Linux now.
 ```shell
-$ git clone --recurse-submodules https://github.com/Safeheron/sgx-safeheron-crypto-suites-cpp.git
-$ cd sgx-safeheron-crypto-suites-cpp 
+$ git clone --recurse-submodules https://github.com/Safeheron/safeheron-crypto-suites-cpp-sgx.git
+$ cd safeheron-crypto-suites-cpp-sgx
 $ mkdir build && cd build
 $ cmake ..
 $ make
