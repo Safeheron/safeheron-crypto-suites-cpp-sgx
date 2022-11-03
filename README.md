@@ -23,7 +23,7 @@ $ make
 $ sudo make install
 ```
 
-# To start using sgx-safeheron-crypto-suites-cpp
+# To start using safeheron-crypto-suites-cpp-sgx
 
 ## CMake
 
