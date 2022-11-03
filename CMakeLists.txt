@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 
-project("SGXSafeheronCryptoSuites" VERSION 1.0.1)
+project("SafeheronCryptoSuitesSgx" VERSION 1.0.1)
 
 add_definitions(-DPB_ENABLE_SGX)
 add_definitions(-DSAFEHERON_SGX_SDK)

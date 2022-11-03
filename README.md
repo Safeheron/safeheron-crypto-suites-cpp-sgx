@@ -41,7 +41,7 @@ set(SGX_COMMON_C_FLAGS "-m64 -O2")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -nostdinc -fmacro-prefix-map=${CMAKE_SOURCE_DIR}=/safeheron")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_C_FLAGS} -nostdinc++ -fmacro-prefix-map=${CMAKE_SOURCE_DIR}=/safeheron")
 
-find_package(SGXSafeheronCryptoSuites REQUIRED)
+find_package(SafeheronCryptoSuitesSgx REQUIRED)
 
 # Set the sgxsdk path
 set(SGX_SDK_PATH "/opt/intel/sgxsdk")
@@ -63,7 +63,7 @@ add_library(${PROJECT_NAME} STATIC XXXX.cpp)
 
 # Additional include paths
 target_include_directories(${PROJECT_NAME} PUBLIC
-        ${SGXSafeheronCryptoSuites_INCLUDE_DIRS}
+        ${SafeheronCryptoSuitesSgx_INCLUDE_DIRS}
         ${SGX_SSL_INCLUDE_DIR}
         ${SGX_SDK_INCLUDE_DIR}
         ${SGX_C_INCLUDE_DIR}
@@ -75,7 +75,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 target_link_libraries(${CMAKE_PROJECT_NAME} "${SGX_COMMON_C_FLAGS} \
         -Wl,--no-undefined -nostdlib -nodefaultlibs -nostartfiles -L${SGX_SDK_LIBRARIES_DIR} \
         -Wl,--whole-archive –lsgx_trts ${TRUST_SGX_SSL_LIBRARY} -Wl,--no-whole-archive \
-        -Wl,--start-group ${TRUST_SGX_SSL_CRYPTO_LIBRARY} ${SGXSafeheronCryptoSuites_LIBRARY} -lsgx_pthread -lsgx_protobuf -lsgx_tstdc -lsgx_tcxx -lsgx_tcrypto -lsgx_tprotected_fs -l${SGX_TSVC_LIB} -Wl,--end-group \
+        -Wl,--start-group ${TRUST_SGX_SSL_CRYPTO_LIBRARY} ${SafeheronCryptoSuitesSgx_LIBRARY} -lsgx_pthread -lsgx_protobuf -lsgx_tstdc -lsgx_tcxx -lsgx_tcrypto -lsgx_tprotected_fs -l${SGX_TSVC_LIB} -Wl,--end-group \
         -Wl,-Bstatic -Wl,-Bsymbolic -Wl,--no-undefined \
         -Wl,-pie,-eenclave_entry -Wl,--export-dynamic \
         -Wl,--defsym,__ImageBase=0"
