@@ -36,20 +36,6 @@ set(UNTRUST_SGX_SSL_LIBRARY "${SGX_SSL_LIBRARIES_DIR}/libsgx_usgxssl.a")
 # Set the source file path
 set(CRYPTO_SUITES_SOURCE_PATH src/safeheron-crypto-suites-cpp/src)
 
-# Gather source files
-AUX_SOURCE_DIRECTORY(${CRYPTO_SUITES_SOURCE_PATH}/crypto-bn-cpp/src/crypto-bn  BN_SOURCE)
-AUX_SOURCE_DIRECTORY(${CRYPTO_SUITES_SOURCE_PATH}/crypto-bn-cpp/src/exception  EXCEPTION_SOURCE)
-AUX_SOURCE_DIRECTORY(${CRYPTO_SUITES_SOURCE_PATH}/crypto-hash-cpp/src/crypto-hash  HASH_SOURCE)
-AUX_SOURCE_DIRECTORY(${CRYPTO_SUITES_SOURCE_PATH}/crypto-hash-cpp/src/compat  COMPAT_SOURCE)
-AUX_SOURCE_DIRECTORY(${CRYPTO_SUITES_SOURCE_PATH}/crypto-encode-cpp/src/crypto-encode  ENCODE_SOURCE)
-AUX_SOURCE_DIRECTORY(${CRYPTO_SUITES_SOURCE_PATH}/crypto-curve-cpp/src/crypto-curve  CURVE_SOURCE)
-AUX_SOURCE_DIRECTORY(${CRYPTO_SUITES_SOURCE_PATH}/crypto-commitment-cpp/src/crypto-commitment  COMMITMENT_SOURCE)
-AUX_SOURCE_DIRECTORY(${CRYPTO_SUITES_SOURCE_PATH}/crypto-paillier-cpp/src/crypto-paillier  PAILLIER_SOURCE)
-AUX_SOURCE_DIRECTORY(${CRYPTO_SUITES_SOURCE_PATH}/crypto-sss-cpp/src/crypto-sss  SSS_SOURCE)
-AUX_SOURCE_DIRECTORY(${CRYPTO_SUITES_SOURCE_PATH}/crypto-zkp-cpp/src/crypto-zkp  ZKP_SOURCE)
-AUX_SOURCE_DIRECTORY(${CRYPTO_SUITES_SOURCE_PATH}/crypto-mta-cpp/src/crypto-mta  MTA_SOURCE)
-AUX_SOURCE_DIRECTORY(${CRYPTO_SUITES_SOURCE_PATH}/crypto-bip32-cpp/src/crypto-bip32  BIP32_SOURCE)
-AUX_SOURCE_DIRECTORY(${CRYPTO_SUITES_SOURCE_PATH}/crypto-ecies-cpp/src/crypto-ecies  ECIES_SOURCE)
 
 set(ED25519-DONNA_SOURCES
 		${CRYPTO_SUITES_SOURCE_PATH}/crypto-curve-cpp/third_party/ed25519-donna/curve25519-donna-32bit.c
@@ -92,18 +78,6 @@ add_library(${CMAKE_PROJECT_NAME} STATIC ${SUITES_SOURCE})
 
 # Additional include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-bn-cpp/src
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-hash-cpp/src
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-encode-cpp/src
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-curve-cpp/src
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-commitment-cpp/src
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-paillier-cpp/src
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-sss-cpp/src
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-zkp-cpp/src
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-mta-cpp/src
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-bip32-cpp/src
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-ecies-cpp/src
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-curve-cpp/third_party
 		${SGX_SSL_INCLUDE_DIR}
 		${SGX_SDK_INCLUDE_DIR}
 		${SGX_C_INCLUDE_DIR}
@@ -111,15 +85,6 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
 		${SGX_PROTOBUF_INCLUDE_DIR}
 		)
 
-# Link flags
-target_link_libraries(${CMAKE_PROJECT_NAME} "${SGX_COMMON_C_FLAGS} \
-        -Wl,--no-undefined -nostdlib -nodefaultlibs -nostartfiles -L${SGX_SDK_LIBRARIES_DIR} \
-        -Wl,--whole-archive –lsgx_trts ${TRUST_SGX_SSL_LIBRARY} -Wl,--no-whole-archive \
-        -Wl,--start-group ${TRUST_SGX_SSL_CRYPTO_LIBRARY} -lsgx_pthread -lsgx_protobuf -lsgx_tstdc -lsgx_tcxx -lsgx_tcrypto -lsgx_tprotected_fs -l${SGX_TSVC_LIB} -Wl,--end-group \
-        -Wl,-Bstatic -Wl,-Bsymbolic -Wl,--no-undefined \
-        -Wl,-pie,-eenclave_entry -Wl,--export-dynamic \
-        -Wl,--defsym,__ImageBase=0"
-		)
 
 set(ENABLE_ASSEMBLE ON)
 
