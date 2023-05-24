@@ -50,7 +50,6 @@ install(
 		${CRYPTO_SUITES_SOURCE_PATH}/crypto-paillier-cpp/src/
 		${CRYPTO_SUITES_SOURCE_PATH}/crypto-sss-cpp/src/
 		${CRYPTO_SUITES_SOURCE_PATH}/crypto-zkp-cpp/src/
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-mta-cpp/src/
 		${CRYPTO_SUITES_SOURCE_PATH}/crypto-bip32-cpp/src/
 		${CRYPTO_SUITES_SOURCE_PATH}/crypto-ecies-cpp/src/
 
