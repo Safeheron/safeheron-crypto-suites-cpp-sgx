@@ -25,6 +25,7 @@ set(SGX_C_INCLUDE_DIR "${SGX_SDK_INCLUDE_DIR}/tlibc")
 set(SGX_CXX_INCLUDE_DIR "${SGX_SDK_INCLUDE_DIR}/libcxx")
 set(SGX_PROTOBUF_INCLUDE_DIR "${SGX_SDK_INCLUDE_DIR}/tprotobuf")
 
+
 # Set the sgxssl path
 set(SGX_SSL_PATH "/opt/intel/sgxssl")
 set(SGX_SSL_INCLUDE_DIR "${SGX_SSL_PATH}/include")
