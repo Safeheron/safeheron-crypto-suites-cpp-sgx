@@ -36,48 +36,23 @@ set(UNTRUST_SGX_SSL_LIBRARY "${SGX_SSL_LIBRARIES_DIR}/libsgx_usgxssl.a")
 # Set the source file path
 set(CRYPTO_SUITES_SOURCE_PATH src/safeheron-crypto-suites-cpp/src)
 
-
-set(ED25519-DONNA_SOURCES
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-curve-cpp/third_party/ed25519-donna/curve25519-donna-32bit.c
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-curve-cpp/third_party/ed25519-donna/curve25519-donna-helpers.c
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-curve-cpp/third_party/ed25519-donna/curve25519-donna-scalarmult-base.c
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-curve-cpp/third_party/ed25519-donna/ed25519.c
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-curve-cpp/third_party/ed25519-donna/ed25519-donna-32bit-tables.c
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-curve-cpp/third_party/ed25519-donna/ed25519-donna-basepoint-table.c
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-curve-cpp/third_party/ed25519-donna/ed25519-donna-impl-base.c
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-curve-cpp/third_party/ed25519-donna/ed25519-donna-memzero.c
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-curve-cpp/third_party/ed25519-donna/modm-donna-32bit.c
-		)
-
-set(PROTOBUF_SOURCE_FILES
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-commitment-cpp/src/crypto-commitment/proto_gen/commitment.pb.switch.cc
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-curve-cpp/src/crypto-curve/proto_gen/curve_point.pb.switch.cc
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-mta-cpp/src/crypto-mta/proto_gen/mta.pb.switch.cc
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-paillier-cpp/src/crypto-paillier/proto_gen/paillier.pb.switch.cc
-		${CRYPTO_SUITES_SOURCE_PATH}/crypto-zkp-cpp/src/crypto-zkp/proto_gen/zkp.pb.switch.cc
-		)
-
-set(SUITES_SOURCE
-		${BN_SOURCE} ${EXCEPTION_SOURCE}
-		${HASH_SOURCE} ${COMPAT_SOURCE}
-		${ENCODE_SOURCE}
-		${CURVE_SOURCE}
-		${COMMITMENT_SOURCE}
-		${PAILLIER_SOURCE}
-		${SSS_SOURCE}
-		${ZKP_SOURCE}
-		${MTA_SOURCE}
-		${BIP32_SOURCE}
-		${ECIES_SOURCE}
-		${ED25519-DONNA_SOURCES}
-		${PROTOBUF_SOURCE_FILES}
-		)
-
-# Build libSGX-CryptoSuites.a
-add_library(${CMAKE_PROJECT_NAME} STATIC ${SUITES_SOURCE})
+# Build libSafeheronCryptoSuitesSgx.a
+add_library(${CMAKE_PROJECT_NAME} STATIC "")
 
 # Additional include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
+		${CRYPTO_SUITES_SOURCE_PATH}/crypto-bn-cpp/src
+		${CRYPTO_SUITES_SOURCE_PATH}/crypto-hash-cpp/src
+		${CRYPTO_SUITES_SOURCE_PATH}/crypto-encode-cpp/src
+		${CRYPTO_SUITES_SOURCE_PATH}/crypto-curve-cpp/src
+		${CRYPTO_SUITES_SOURCE_PATH}/crypto-commitment-cpp/src
+		${CRYPTO_SUITES_SOURCE_PATH}/crypto-paillier-cpp/src
+		${CRYPTO_SUITES_SOURCE_PATH}/crypto-sss-cpp/src
+		${CRYPTO_SUITES_SOURCE_PATH}/crypto-zkp-cpp/src
+		${CRYPTO_SUITES_SOURCE_PATH}/crypto-mta-cpp/src
+		${CRYPTO_SUITES_SOURCE_PATH}/crypto-bip32-cpp/src
+		${CRYPTO_SUITES_SOURCE_PATH}/crypto-ecies-cpp/src
+		${CRYPTO_SUITES_SOURCE_PATH}/crypto-bip39-cpp/src
 		${SGX_SSL_INCLUDE_DIR}
 		${SGX_SDK_INCLUDE_DIR}
 		${SGX_C_INCLUDE_DIR}
@@ -85,7 +60,19 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
 		${SGX_PROTOBUF_INCLUDE_DIR}
 		)
 
-
 set(ENABLE_ASSEMBLE ON)
+add_definitions(-DENABLE_ASSEMBLE)
+add_subdirectory(${CRYPTO_SUITES_SOURCE_PATH}/crypto-bn-cpp/src)
+add_subdirectory(${CRYPTO_SUITES_SOURCE_PATH}/crypto-hash-cpp/src)
+add_subdirectory(${CRYPTO_SUITES_SOURCE_PATH}/crypto-encode-cpp/src)
+add_subdirectory(${CRYPTO_SUITES_SOURCE_PATH}/crypto-curve-cpp/src)
+add_subdirectory(${CRYPTO_SUITES_SOURCE_PATH}/crypto-commitment-cpp/src)
+add_subdirectory(${CRYPTO_SUITES_SOURCE_PATH}/crypto-paillier-cpp/src)
+add_subdirectory(${CRYPTO_SUITES_SOURCE_PATH}/crypto-sss-cpp/src)
+add_subdirectory(${CRYPTO_SUITES_SOURCE_PATH}/crypto-zkp-cpp/src)
+add_subdirectory(${CRYPTO_SUITES_SOURCE_PATH}/crypto-mta-cpp/src)
+add_subdirectory(${CRYPTO_SUITES_SOURCE_PATH}/crypto-bip32-cpp/src)
+add_subdirectory(${CRYPTO_SUITES_SOURCE_PATH}/crypto-ecies-cpp/src)
+add_subdirectory(${CRYPTO_SUITES_SOURCE_PATH}/crypto-bip39-cpp/src)
 
 include("cmake/setup_installation.cmake")
